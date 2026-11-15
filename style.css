@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background-image: url("Ultra-Detailed Concrete Surface Texture.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Main website area */
+.site {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Logo */
+.logo {
+  position: fixed;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: auto;
+  z-index: 10;
+}
+
+/* 4 columns */
+.tracks {
+  width: 80%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 45px 40px;
+  margin-top: 100px;
+}
+
+/* Clickable track area */
+.player {
+  position: relative;
+  width: 60mm;
+  height: 60px;
+  margin: auto;
+  cursor: pointer;
+}
+
+/* Normal line */
+.flatline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50mm;
+  height: 6px;
+  background: black;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+/* Live waveform */
+.waveform {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50mm;
+  height: 40px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  display: block;
+}
+
+/* Playing */
+.player.playing .flatline {
+  opacity: 0;
+}
+
+.player.playing .waveform {
+  opacity: 1;
+  z-index: 3;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .tracks {
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .tracks {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .logo {
+    width: 110px;
+  }
+}
