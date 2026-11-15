@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url("Ultra-Detailed Concrete Surface Texture.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+.site {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+/* DESKTOP LOGO */
+.logo {
+  position: fixed;
+  top: 23%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: auto;
+  z-index: 10;
+}
+
+/* DESKTOP TRACKS */
+.tracks {
+  width: 80%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 40px;
+  row-gap: 180px;
+  margin-top: 42vh;
+}
+
+/* Clickable track area */
+.player {
+  position: relative;
+  width: 60mm;
+  height: 60px;
+  margin: auto;
+  cursor: pointer;
+}
+
+/* Normal line */
+.flatline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50mm;
+  height: 6px;
+  background: black;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+/* Live waveform */
+.waveform {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50mm;
+  height: 40px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  display: block;
+}
+
+/* Playing */
+.player.playing .flatline {
+  opacity: 0;
+}
+
+.player.playing .waveform {
+  opacity: 1;
+  z-index: 3;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .tracks {
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 500px) {
+
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center top;
+  }
+
+  .site {
+    min-height: auto;
+    display: block;
+    padding: 0 20px 80px;
+  }
+
+  /* MOBILE LOGO */
+  .logo {
+    position: absolute !important;
+    top: 170px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 140px !important;
+    height: auto;
+    z-index: 10;
+  }
+
+  /* MOBILE TRACKS */
+  .tracks {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    row-gap: 35px;
+    margin-top: 300px !important;
+  }
+
+  .player {
+    width: 100%;
+  }
+
+  .flatline,
+  .waveform {
+    width: 70%;
+  }
+}
